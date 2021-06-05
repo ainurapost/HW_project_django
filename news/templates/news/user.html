@@ -1,0 +1,42 @@
+{% extends "news/base.html" %}
+
+{% block title %} User profile{% endblock %}
+
+{% block sidebar %} {% endblock  %}
+
+{% block content %}
+
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">User name: {{user.username}}</h5>
+    <p class="card-text">Дата регистрации: {{user.date_joined|date:'Y-m-d'}}</p>
+      <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Информация</h5>
+            <p class="card-text">email: {{user.email}}</p>
+            <p class="card-text">ФИО: {{user.first_name}} {{user.last_name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Все посты</h5>
+            <p class="card-text">
+                  <ul class="list-group list-group-flush">
+                      {% for news in news %}
+                    <li class="list-group-item"><a href="{% url 'view_news' news.id %}">{{news.title}}</a></li>
+                      {% endfor %}
+                  </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{%  extends "news/base.html" %}
+
+{% block title %}
+  Add News :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}
+
+
+{% block content %}
+    <h1>Add news</h1>
+
+
+<form action="{% url 'add_news' %}" method="post">
+      {%  csrf_token %}
+
+{% for field in form %}
+          <div class="form-group">
+            {{ field.label_tag }}
+            {{ field}}
+              <div class="invalid-feedback">
+                {{field.errors}}
+                {% if msg != ""%}
+                <div class="alert alert-primary" role="alert">
+                  {{msg}}
+                </div>
+                {% endif %}
+              </div>
+          </div>
+{% endfor %}
+
+<button type="submit" class="btn btn-primary btn-block mt-3">ADD NEWS</button>
+
+</form>
+{% endblock %}
+
