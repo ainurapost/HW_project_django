@@ -21,23 +21,12 @@ class Category(models.Model):
 
 
 class News(models.Model):
-    rating_choice = [
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
-        ('6', '6'),
-        ('7', '7'),
-        ('8', '8'),
-        ('9', '9'),
-        ('10', '10'),
-    ]
     title = models.CharField(max_length=200)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     pub_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT, null=True)
+    views_quantity = models.IntegerField(default=0)
     rating_sum = models.IntegerField(default=0)
 
     def get_absolute_url(self):
@@ -71,8 +60,6 @@ class Comment(models.Model):
     text = models.TextField()
 
     def __str__(self):
-        return f'{self.owner} - {self.post}'
-
-
+        return f'{self.owner} - {self.news}'
 
 

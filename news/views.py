@@ -1,21 +1,26 @@
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import News, Category, Rating
-from .forms import NewNewsForm, RegisterForm, LoginForm, RatingForm
+from .models import News, Category, Rating, Comment
+from .forms import NewNewsForm, RegisterForm, LoginForm, RatingForm, CommentForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
+from django.views.generic import ListView
+from django.core.paginator import Paginator
 
 
 def index(request):
     news = News.objects.all()
-    content = {
-        'news': news,
-        'title': 'Список новостей',
+    paginator = Paginator(news, 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        # 'news': news,
+        # 'title': 'Список новостей',
+        'page_obj': page_obj,
     }
-    return render(request, 'news/index.html', content)
+    return render(request, 'news/index.html', context)
 
 
 def user(request, pk):
@@ -91,12 +96,49 @@ def add_news(request):
 
 
 def view_news(request, news_id):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/login')
+
+    rate = 0
     news_item = get_object_or_404(News, pk=news_id)
-    return render(request, 'news/view_news.html', {'news_item': news_item})
+    news_item.views_quantity += 1
+    news_item.save()
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            instance = Comment()
+            instance.owner = request.user
+            instance.news = news_item
+            instance.text = form.cleaned_data['text']
+            instance.save()
+    # else:
+    #     r = Rating.objects.filter(news=news_id).count()
+    #     if r > 0:
+    #         rate = news_item.rating_sum / r
+
+        r = Rating.objects.filter(news=news_id).count()
+        if r > 0:
+            rate = news_item.rating_sum / r
+
+    comment_form = CommentForm
+    rating_form = RatingForm
+
+    comments = Comment.objects.filter(news=news_id)
+    context = {
+        'news_item': news_item,
+        'form': comment_form,
+        'rating_form': rating_form,
+        'comments': comments,
+        'rate': rate,
+    }
+
+    return render(request, 'news/view_news.html', context)
 
 
 def error_404(request, exception):
     return render(request, 'blog/404.html')
+
 
 def search(request):
     if not request.user.is_authenticated:
@@ -104,11 +146,10 @@ def search(request):
 
     query = request.GET.get('query')
     if request.GET.get('query') is None:
-        return render(request, 'news/index.html')
+        return render(request, 'news/search.html')
 
     res = News.objects.filter(Q(title__icontains=request.GET.get('query')) |
-                              Q(clipped_text__icontains=request.GET.get('query')) |
-                              Q(text__icontains=request.GET.get('query')))
+                              Q(content__icontains=request.GET.get('query')))
     return render(request, 'news/search.html', {'result': res})
 
 
@@ -124,11 +165,16 @@ def rate_news(request, pk):
             try:
                 r = Rating(owner=request.user, news=news)
                 r.save()
+                print(r)
                 news.rating_sum = news.rating_sum + form.cleaned_data['rating_sum']
                 news.save()
+
             except BaseException as e:
                 pass
     return HttpResponseRedirect(f'/view_news/{pk}/')
+
+
+
 
 
 

@@ -10,6 +10,7 @@
 
 {% block content %}
 
+{% comment %}
 {% for  item in news %}
           <div class="card mb-3">
             <div class="card-header">
@@ -29,5 +30,53 @@
                 </div>
           </div>
 {% endfor %}
+{% endcomment %}
+
+
+<div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        </li>
+    {% endif %}
+
+    {% for i in page_obj.paginator.page_range %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        </li>
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a></li>
+        </li>
+    {% endif %}
+
+  </ul>
+</nav>
+</div>
+
+      {% for item in page_obj %}
+          <div class="card mb-3">
+            <div class="card-header">
+              Категория: <a href="{{ item.category.get_absolute_url }}"> {{ item.category }}</a>
+            </div>
+            <div class="card-body">
+                <div class="media">
+                    <div class="media-body">
+                        <h5 class="card-title" >{{item.title}}</h5>
+                        <p class="card-text" >{{item.content| linebreaks|truncatewords:40}} </p>
+                          <a href="{{item.get_absolute_url}}" class="btn btn-primary" >Read more...</a>
+                    </div>
+
+                    <div class="card-footer text-muted">
+                      {{ item.pub_date|date:"Y-m-d H:m:s" }}
+                    </div>
+                </div>
+          </div>
+      {% endfor %}
 
 {% endblock %}
+

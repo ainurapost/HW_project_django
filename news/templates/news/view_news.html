@@ -10,15 +10,17 @@
 
 {% block content %}
 
+
       <div class="card mb-3">
         <div class="card-header">
-          Категория: <a href="{{ item.category.get_absolute_url }}"> {{ news_item.category }} </a>
-            <p> Рейтинг: {{ rate_news }}</p>
-            <form method="post" action="/view_news/{{news.id}}">
+          Категория: <a href="{% url 'view_by_category' news_item.category.pk %}"> {{ news_item.category }} </a>
+            <p> Рейтинг: {{ rate }} Просмотр: {{news_item.views_quantity}}</p>
+            <form method="post" >
                 {% csrf_token %}
-                {{ rate_form }}
+                {{ rating_form }}
                 <button class="btn btn-primary" type="submit">Rate</button>
             </form>
+
         </div>
         <div class="card-body">
             <div class="media">
@@ -26,15 +28,34 @@
                     <h5 class="card-title" >{{news_item.title}}</h5>
                     <p class="card-text" >{{news_item.content}} </p>
                 </div>
-                <form method="post" action="/view_news/{{news.id}}">
-                {% csrf_token %}
-                {{ rating_form }}
-                <button class="btn btn-primary" type="submit">Rate</button>
-                </form>
-                <div class="card-footer text-muted">
-                  {{ news_item.pub_date|date:"Y-m-d H:m:s" }}
-                </div>
             </div>
+
+        <div class="card-footer text-muted ">
+          {{ news_item.pub_date|date:"Y-m-d H:m:s" }}
+        </div>
+
+        </div>
+
+                    <!-- Comments form-->
+        <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="btn btn-primary" type="submit">Add</button>
+                </form>
+            </div>
+        </div>
+
+            {% for comment in comments %}
+                <div class="media mb-4">
+                    <div class="media-body">
+                        <h5 class="mt-0"><a href="/user/{{comment.owner.id}}"> {{ comment.owner.last_name }} {{ comment.owner.first_name }} </a></h5>
+                        {{ comment.text }}
+                    </div>
+                </div>
+            {% endfor %}
       </div>
 
 

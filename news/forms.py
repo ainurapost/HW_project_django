@@ -1,5 +1,5 @@
 from django import forms
-from .models import News
+from .models import News, Comment
 from django.core.exceptions import ValidationError
 import re
 
@@ -51,3 +51,16 @@ class RatingForm(forms.ModelForm):
     class Meta:
         model = News
         fields = ['rating_sum']
+        widgets = {
+            'rating': forms.TextInput(attrs=inputAttrs),
+        }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 4, 'cols': 90}),
+        }
+
