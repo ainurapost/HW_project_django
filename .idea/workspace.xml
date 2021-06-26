@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b7db2ab-6336-4b3f-8d5e-d248b586bb7a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/hw_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hw_project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw_project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/11.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/11.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/migrations/0002_auto_20210605_1422.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/templates/news/view_news.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/news/view_news.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +52,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\Projects\hw_project" />
       <recent name="D:\Projects\hw_project\news\templates\news" />
       <recent name="D:\Projects\hw_project\static\bootstrap" />
       <recent name="D:\Projects\hw_project\static\bootstrap\js" />

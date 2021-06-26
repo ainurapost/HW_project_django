@@ -3,3 +3,4 @@ venv/
 .idea/
 news/migrations
 news/11.py
+.idea/workspace.xml
