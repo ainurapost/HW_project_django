@@ -1,0 +1,5 @@
+db.sqlite3
+venv/
+.idea/
+news/migrations
+news/11.py

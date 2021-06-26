@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b7db2ab-6336-4b3f-8d5e-d248b586bb7a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/hw_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hw_project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/templates/news/inc/_nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/news/inc/_nav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/templates/news/inc/_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/news/inc/_sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/templates/news/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/news/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/news/templates/news/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/news/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hw_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/11.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/11.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/migrations/0002_auto_20210605_1422.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/news/templates/news/view_news.html" beforeDir="false" afterPath="$PROJECT_DIR$/news/templates/news/view_news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/news/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/news/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +52,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django_fp/blog/views.py" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../django_fp/blog/views.py" />
   </component>
   <component name="ReadonlyStatusHandler">

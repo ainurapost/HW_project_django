@@ -15,7 +15,7 @@
         <div class="card-header">
           Категория: <a href="{% url 'view_by_category' news_item.category.pk %}"> {{ news_item.category }} </a>
             <p> Рейтинг: {{ rate }} Просмотр: {{news_item.views_quantity}}</p>
-            <form method="post" >
+            <form method="post" action="/rate_news/{{news_item.id}}" >
                 {% csrf_token %}
                 {{ rating_form }}
                 <button class="btn btn-primary" type="submit">Rate</button>

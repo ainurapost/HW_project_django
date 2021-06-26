@@ -6,8 +6,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.core.paginator import Paginator
+
+
+class IndexView(ListView):
+    model = News
+    paginate_by = 2
+    template_name = 'news/index.html'
 
 
 def index(request):
@@ -21,6 +27,11 @@ def index(request):
         'page_obj': page_obj,
     }
     return render(request, 'news/index.html', context)
+
+
+class UserView(DetailView):
+    model = User
+    template_name = 'news/user.html'
 
 
 def user(request, pk):
@@ -112,14 +123,11 @@ def view_news(request, news_id):
             instance.news = news_item
             instance.text = form.cleaned_data['text']
             instance.save()
-    # else:
-    #     r = Rating.objects.filter(news=news_id).count()
-    #     if r > 0:
-    #         rate = news_item.rating_sum / r
-
+    else:
         r = Rating.objects.filter(news=news_id).count()
         if r > 0:
             rate = news_item.rating_sum / r
+
 
     comment_form = CommentForm
     rating_form = RatingForm
